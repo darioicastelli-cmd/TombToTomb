@@ -27669,7 +27669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019318419942384898, guid: 9e7c7353b58221c4aafd853bfe879c9e, type: 3}
       propertyPath: m_CursorLockBehavior
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3568451093991613147, guid: 9e7c7353b58221c4aafd853bfe879c9e, type: 3}
       propertyPath: m_Name
