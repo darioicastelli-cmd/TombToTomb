@@ -523,7 +523,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: e0a5668171b69bb4ca52d973d8f3a964, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -946,7 +946,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ff188f58422043f489060e28a5e4e0c0, type: 2}
+  - {fileID: 2100000, guid: d162e28e67f783c4ebcd9f4b9d638c56, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1020,6 +1020,8 @@ MonoBehaviour:
   requiredAmount: 6
   playerInventory: {fileID: 0}
   requirementText: {fileID: 7509165081902181158}
+  warningPanel: {fileID: 0}
+  warningText: {fileID: 0}
 --- !u!1 &8294946741145135838
 GameObject:
   m_ObjectHideFlags: 0
