@@ -8114,9 +8114,17 @@ PrefabInstance:
       value: SM_DoorComplete
       objectReference: {fileID: 0}
     - target: {fileID: 7966994708338228667, guid: 97840e4a9b3b8de478083516c6132774, type: 3}
-      propertyPath: requiredAmount
-      value: 0
+      propertyPath: requiredItem
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7966994708338228667, guid: 97840e4a9b3b8de478083516c6132774, type: 3}
+      propertyPath: requiredAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966994708338228667, guid: 97840e4a9b3b8de478083516c6132774, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 1821537967}
     - target: {fileID: 8102536624176758160, guid: 97840e4a9b3b8de478083516c6132774, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -33384,6 +33392,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e7c7353b58221c4aafd853bfe879c9e, type: 3}
+--- !u!114 &1821537967 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3534626868218144847, guid: 9e7c7353b58221c4aafd853bfe879c9e, type: 3}
+  m_PrefabInstance: {fileID: 1821537966}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e95b77870fe404583b21dee7b099bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_Inventory
 --- !u!1001 &1831144005
 PrefabInstance:
   m_ObjectHideFlags: 0
