@@ -1366,6 +1366,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5853854647480607757, guid: 8ba6a351ec7bdfa45bcfe93b453d53fd, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7396263911445645339, guid: 8ba6a351ec7bdfa45bcfe93b453d53fd, type: 3}
       propertyPath: m_Name
       value: Collectible_Talisman
@@ -1975,6 +1979,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3339324717158431692, guid: 2e8ddd1be46ea8844906e090e0734c29, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3503815486345387903, guid: 2e8ddd1be46ea8844906e090e0734c29, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.983425
@@ -2110,6 +2118,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.23
       objectReference: {fileID: 0}
+    - target: {fileID: 7746275605507419938, guid: 81ae748a7ad8233409c4ad9d4f2521b4, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8450184037593692085, guid: 81ae748a7ad8233409c4ad9d4f2521b4, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -2128,7 +2140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8450184037593692085, guid: 81ae748a7ad8233409c4ad9d4f2521b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.08
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 8450184037593692085, guid: 81ae748a7ad8233409c4ad9d4f2521b4, type: 3}
       propertyPath: m_LocalPosition.z
