@@ -1,16 +1,28 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
-public class UIHealth : MonoBehaviour
+public class UIHealthBar : MonoBehaviour
 {
-    [SerializeField] private Script_All_HPSelf playerHP; // Referencia al script de vida del jugador
-    [SerializeField] private TextMeshProUGUI healthText; // Texto en pantalla
+    [SerializeField] private Script_All_HPSelf playerHP;
+    [SerializeField] private Image fillImage;
+
+    private void Start()
+    {
+        UpdateHealthBar();
+    }
 
     private void Update()
     {
-        if (playerHP != null && healthText != null)
-        {
-            healthText.text = "HP: " + playerHP.GetHealthPoints() + " / " + playerHP.GetMaxHealthPoints();
-        }
+        UpdateHealthBar();
+    }
+
+    private void UpdateHealthBar()
+    {
+        if (playerHP == null || fillImage == null)
+            return;
+
+        fillImage.fillAmount =
+            (float)playerHP.GetHealthPoints() /
+            playerHP.GetMaxHealthPoints();
     }
 }

@@ -38,8 +38,8 @@ public class UICollectibles : MonoBehaviour
         int talismans = playerInventory.GetItemCount(ItemId.Talisman);
         int keyFragments = playerInventory.GetItemCount(ItemId.KeyFragment);
 
-        if (gemText != null) gemText.text = $"Gems: {gems}";
-        if (talismanText != null) talismanText.text = $"Talismans: {talismans}";
-        if (keyFragmentText != null) keyFragmentText.text = $"Key Fragments: {keyFragments}";
+        if (gemText != null) gemText.text = $" {gems}";
+        if (talismanText != null) talismanText.text = $" {talismans}";
+        if (keyFragmentText != null) keyFragmentText.text = $" {keyFragments}";
     }
 }

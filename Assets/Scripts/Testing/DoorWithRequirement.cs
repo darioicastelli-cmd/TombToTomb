@@ -8,13 +8,16 @@ public class DoorWithRequirement : DoorInteractable
     [SerializeField] private ItemId requiredItem;
     [SerializeField] private int requiredAmount;
     [SerializeField] private Player_Inventory playerInventory;
+    [SerializeField] private ItemIconDatabase iconDatabase;
 
     [Header("UI en la puerta")]
-    [SerializeField] private TextMeshProUGUI requirementText; // texto fijo en la puerta
+    [SerializeField] private TextMeshProUGUI requirementText;
 
     [Header("UI de aviso general")]
-    [SerializeField] private GameObject warningPanel;         // panel de aviso
-    [SerializeField] private TextMeshProUGUI warningText;     // texto dentro del panel
+    [SerializeField] private GameObject warningPanel;
+    [SerializeField] private TextMeshProUGUI warningText;
+
+    private Coroutine hideRoutine;
 
     private void Start()
     {
@@ -22,6 +25,15 @@ public class DoorWithRequirement : DoorInteractable
         if (playerInventory != null)
             playerInventory.OnInventoryChanged += UpdateRequirementUI;
     }
+
+    private void OnDestroy()
+    {
+        if (playerInventory != null)
+            playerInventory.OnInventoryChanged -= UpdateRequirementUI;
+    }
+
+    private string ItemLabel =>
+        iconDatabase != null ? iconDatabase.GetIconTag(requiredItem) : requiredItem.ToString();
 
     public override void Interact()
     {
@@ -35,33 +47,27 @@ public class DoorWithRequirement : DoorInteractable
 
         if (currentAmount >= requiredAmount)
         {
-            Debug.Log("Requisito cumplido, abriendo puerta...");
-            base.Interact(); // abre la puerta
+            base.Interact();
         }
-        else
+        else if (warningPanel != null && warningText != null)
         {
-            Debug.Log($"Necesitás {requiredAmount} {requiredItem}, pero tenés {currentAmount}.");
+            warningPanel.SetActive(true);
+            warningText.text =
+                $"No tienes suficiente para abrir esta puerta.\nTienes {currentAmount} de  {ItemLabel}\nNecesitas {requiredAmount}.";
 
-            //Mostrar cartel en pantalla y ocultarlo luego de 3 segundos
-            if (warningPanel != null && warningText != null)
-            {
-                warningPanel.SetActive(true);
-                warningText.text = $"No tienes la cantidad necesaria de {requiredItem} para abrir esta puerta.";
-                StartCoroutine(HideWarningAfterDelay(3f));
-            }
+            if (hideRoutine != null) StopCoroutine(hideRoutine);
+            hideRoutine = StartCoroutine(HideWarningAfterDelay(3f));
         }
     }
 
     private void UpdateRequirementUI()
     {
+        if (requirementText == null || playerInventory == null) return;
+
         int currentAmount = playerInventory.GetItemCount(requiredItem);
-        if (requirementText != null && playerInventory != null)
-        {
-            requirementText.text = $"Necesitás {requiredAmount} {requiredItem}, \nTienes {currentAmount}.";
-        }
+        requirementText.text = $"Tienes {currentAmount} de  {ItemLabel}\nNecesitas {requiredAmount}";
     }
 
-    // corrutina para timer del cartel
     private IEnumerator HideWarningAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
