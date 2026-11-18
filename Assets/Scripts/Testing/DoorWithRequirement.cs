@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-
+using System.Collections;
 
 public class DoorWithRequirement : DoorInteractable
 {
@@ -8,9 +8,16 @@ public class DoorWithRequirement : DoorInteractable
     [SerializeField] private ItemId requiredItem;
     [SerializeField] private int requiredAmount;
     [SerializeField] private Player_Inventory playerInventory;
+    [SerializeField] private ItemIconDatabase iconDatabase;
 
-    [Header("UI")]
-    [SerializeField] private TextMeshProUGUI requirementText; // arrastrá el texto en el inspector
+    [Header("UI en la puerta")]
+    [SerializeField] private TextMeshProUGUI requirementText;
+
+    [Header("UI de aviso general")]
+    [SerializeField] private GameObject warningPanel;
+    [SerializeField] private TextMeshProUGUI warningText;
+
+    private Coroutine hideRoutine;
 
     private void Start()
     {
@@ -18,6 +25,16 @@ public class DoorWithRequirement : DoorInteractable
         if (playerInventory != null)
             playerInventory.OnInventoryChanged += UpdateRequirementUI;
     }
+
+    private void OnDestroy()
+    {
+        if (playerInventory != null)
+            playerInventory.OnInventoryChanged -= UpdateRequirementUI;
+    }
+
+    private string ItemLabel =>
+        iconDatabase != null ? iconDatabase.GetIconTag(requiredItem) : requiredItem.ToString();
+
     public override void Interact()
     {
         if (playerInventory == null)
@@ -30,20 +47,30 @@ public class DoorWithRequirement : DoorInteractable
 
         if (currentAmount >= requiredAmount)
         {
-            Debug.Log("Requisito cumplido, abriendo puerta...");
-            base.Interact(); // esto alterna isOpen y activa la animación
+            base.Interact();
         }
-        else
+        else if (warningPanel != null && warningText != null)
         {
-            Debug.Log($"Necesitás {requiredAmount} {requiredItem}, pero tenés {currentAmount}.");
+            warningPanel.SetActive(true);
+            warningText.text =
+                $"No tienes suficiente para abrir esta puerta.\nTienes {currentAmount} de  {ItemLabel}\nNecesitas {requiredAmount}.";
+
+            if (hideRoutine != null) StopCoroutine(hideRoutine);
+            hideRoutine = StartCoroutine(HideWarningAfterDelay(3f));
         }
     }
+
     private void UpdateRequirementUI()
     {
+        if (requirementText == null || playerInventory == null) return;
+
         int currentAmount = playerInventory.GetItemCount(requiredItem);
-        if (requirementText != null && playerInventory != null)
-        {
-            requirementText.text = $"Necesitás {requiredAmount} {requiredItem}, Tienes {currentAmount}.";
-        }
+        requirementText.text = $"Tienes {currentAmount} de  {ItemLabel}\nNecesitas {requiredAmount}";
+    }
+
+    private IEnumerator HideWarningAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        warningPanel.SetActive(false);
     }
 }

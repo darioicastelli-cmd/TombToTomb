@@ -6,6 +6,8 @@ public class Player_RespawnCC : MonoBehaviour
     private Script_All_HPSelf healthSystem;
     private CharacterController cc;
 
+    [SerializeField] private GameObject Teleport;
+
     private void Start()
     {
         healthSystem = GetComponent<Script_All_HPSelf>();
@@ -22,15 +24,30 @@ public class Player_RespawnCC : MonoBehaviour
 
     public void Respawn()
     {
+        // Guardar posición donde murió el jugador
+        Vector3 deathPosition = transform.position;
+
+        // Teleport en el lugar de muerte
+        if (Teleport != null)
+        {
+            Instantiate(Teleport, deathPosition, Quaternion.identity);
+        }
+
         if (cc != null)
         {
-            cc.enabled = false; // desactivar CharacterController para mover
+            cc.enabled = false;
             transform.position = lastCheckpoint;
-            cc.enabled = true;  // reactivar
+            cc.enabled = true;
         }
         else
         {
             transform.position = lastCheckpoint;
+        }
+
+        // Teleport en el checkpoint
+        if (Teleport != null)
+        {
+            Instantiate(Teleport, lastCheckpoint, Quaternion.identity);
         }
 
         // Quitar 1 punto de vida
