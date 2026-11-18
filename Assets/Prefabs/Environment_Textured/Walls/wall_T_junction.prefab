@@ -71,5 +71,58 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 67dddb79489e7924e989235b929cee46, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6139736997761167812}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 67dddb79489e7924e989235b929cee46, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5243063877989418103}
   m_SourcePrefab: {fileID: 100100000, guid: 67dddb79489e7924e989235b929cee46, type: 3}
+--- !u!1 &712276164822601268 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 67dddb79489e7924e989235b929cee46, type: 3}
+  m_PrefabInstance: {fileID: 370397653428056933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6139736997761167812
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712276164822601268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.040000003, y: 0.02, z: 0.0019591337}
+  m_Center: {x: 0.0000000047683715, y: 0.01, z: 0.000026157983}
+--- !u!65 &5243063877989418103
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712276164822601268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0018112373, y: 0.02, z: 0.020673787}
+  m_Center: {x: 0.000037796497, y: 0.01, z: -0.0096631}
